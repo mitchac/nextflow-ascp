@@ -1,5 +1,8 @@
 process ascp_download {
 container 'ibmcom/aspera-cli'
+errorStrategy 'retry'
+maxErrors 5
+
 
 input:
 val(path)
