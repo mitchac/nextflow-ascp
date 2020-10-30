@@ -11,6 +11,6 @@ file 'reads.txt'
 script:
 """
 #!/usr/bin/curl
-curl 'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp' > reads.txt 
+# curl 'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp' 
 """
 }
