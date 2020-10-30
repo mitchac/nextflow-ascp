@@ -10,6 +10,6 @@ file 'reads.txt'
 
 script:
 """
-wget https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp -O reads.txt 
+wget 'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp' -O reads.txt 
 """
 }
