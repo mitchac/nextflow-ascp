@@ -6,7 +6,7 @@ input:
 val(run_id)
 
 output:
-file reads.txt
+file 'reads.txt'
 
 script:
 """
