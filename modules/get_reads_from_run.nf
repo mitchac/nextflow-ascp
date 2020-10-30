@@ -1,6 +1,6 @@
 process get_reads_from_run {
 
-container 'alpine:latest'
+container 'ubuntu:latest'
 
 input:
 val(run_id)
