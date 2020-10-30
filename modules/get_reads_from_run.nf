@@ -1,6 +1,6 @@
 process get_reads_from_run {
 
-container 'ubuntu:latest'
+container 'curlimages/curl:latest'
 
 input:
 val(run_id)
