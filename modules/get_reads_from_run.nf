@@ -6,10 +6,10 @@ input:
 val(run_id)
 
 output:
-stdout:
+file reads.txt
 
 script:
 """
-curl https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp
+curl https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp -o reads.txt 
 """
 }
