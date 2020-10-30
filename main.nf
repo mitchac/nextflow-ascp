@@ -11,5 +11,5 @@ include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 workflow {
     //ascp_download(ch_paths)
     //extract_archive(ascp_download.out)
-    get_reads_from_run(ERR1739691)
+    get_reads_from_run('ERR1739691')
 }
