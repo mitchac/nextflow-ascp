@@ -3,7 +3,7 @@ process extract_archive {
 container 'ubuntu:latest'
 
 input:
-file(arc
+file(archive)
 
 output:
 file "*.fastq"
