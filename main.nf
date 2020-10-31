@@ -9,9 +9,9 @@ include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 //small (~10Mb) test paired-end phage data set SRR12118866 
 
 workflow {
-    //get_reads_from_run('SRR12118866')
-    //ascp_download(get_reads_from_run.out.splitText( by: 1 ))
-    ascp_download('vol1/fastq/SRR121/066/SRR12118866/SRR12118866_2.fastq.gz')
+    get_reads_from_run('SRR12118866')
+    ascp_download(get_reads_from_run.out.splitText())
+    //ascp_download('vol1/fastq/SRR121/066/SRR12118866/SRR12118866_2.fastq.gz')
     //ascp_download(ch_paths)
     //extract_archive(ascp_download.out)
     //get_reads_from_run('ERR1739691')
