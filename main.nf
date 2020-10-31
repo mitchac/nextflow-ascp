@@ -11,6 +11,7 @@ include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 workflow {
     get_reads_from_run('SRR12118866')
     ascp_download(get_reads_from_run.out.splitText().map{it -> it.trim()})
+    extract_archive(ascp_download.out)
     //ascp_download('vol1/fastq/SRR121/066/SRR12118866/SRR12118866_2.fastq.gz')
     //ascp_download(ch_paths)
     //extract_archive(ascp_download.out)
