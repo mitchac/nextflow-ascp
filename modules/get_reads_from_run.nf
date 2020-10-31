@@ -1,6 +1,6 @@
 process get_reads_from_run {
 
-container 'ubuntu:latest'
+container 'tutum/curl:latest'
 
 input:
 val(run_id)
