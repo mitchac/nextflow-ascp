@@ -1,6 +1,6 @@
 process get_reads_from_run {
 
-container 'ellerbrock/alpine-bash-curl-ssl:latest'
+container 'ubuntu:latest'
 
 input:
 val(run_id)
