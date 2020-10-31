@@ -6,12 +6,12 @@ input:
 val(run_id)
 
 output:
-//file 'reads.txt'
-stdout
+file 'reads.txt'
 
 script:
 """
 curl -k 'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp' \
-  | grep -Po 'vol.*?fastq.gz' 
+  | grep -Po 'vol.*?fastq.gz' \
+  > reads.txt
 """
 }
