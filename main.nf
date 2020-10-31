@@ -10,7 +10,7 @@ include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 
 workflow {
     get_reads_from_run('SRR12118866')
-    ascp_download(get_reads_from_run.out.splitText( by: 10 ))
+    ascp_download(get_reads_from_run.out.splitText( by: 1 ))
     //ascp_download(ch_paths)
     //extract_archive(ascp_download.out)
     //get_reads_from_run('ERR1739691')
