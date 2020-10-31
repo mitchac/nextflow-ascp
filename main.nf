@@ -1,8 +1,8 @@
 nextflow.preview.dsl=2
 
+include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 include {ascp_download} from './modules/ascp_download.nf'
 include {extract_archive} from './modules/extract_archive.nf'
-include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 
 //using small (~10Mb) paired-end test data set SRR12118866 
 
