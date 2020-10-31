@@ -5,9 +5,10 @@ include {ascp_download} from './modules/ascp_download.nf'
 include {extract_archive} from './modules/extract_archive.nf'
 
 //using small (~10Mb) paired-end test data set SRR12118866 
+Channel.from('SRR12118866').set{ ch_run }
 
 workflow {
-    get_reads_from_run('SRR12118866')
+    get_reads_from_run(ch_run)
     ascp_download(get_reads_from_run.out.splitText().map{it -> it.trim()})
     extract_archive(ascp_download.out)
 }
