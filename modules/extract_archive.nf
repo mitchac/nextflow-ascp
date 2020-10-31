@@ -1,12 +1,12 @@
 process extract_archive {
 
-errorStrategy 'retry'
-maxErrors 5
+container 'ubuntu:latest'
 
 input:
-file(archive)
+file(arc
 
 output:
+file "*.fastq"
 
 script:
 """
