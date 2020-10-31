@@ -11,7 +11,7 @@ file 'reads.txt'
 script:
 """
 curl 'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${run_id}&result=read_run&fields=fastq_ftp' \
-  | grep -P '^.*vol.*fastq.gz\$' \
+  | grep '^.*vol(.*)fastq.gz\$' \
   > reads.txt 
 """
 }
