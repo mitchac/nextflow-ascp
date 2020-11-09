@@ -1,4 +1,4 @@
-process ascp_download {
+process get_ena_file_size {
 
 container 'meandor/ubuntu-lftp'
 
