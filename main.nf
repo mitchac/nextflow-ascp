@@ -9,6 +9,7 @@ Channel.from('SRR12118866').set{ ch_run }
 
 workflow {
     get_reads_from_run(ch_run)
-    ascp_download(get_reads_from_run.out.splitText().map{it -> it.trim()})
-    extract_archive(ascp_download.out)
+    get_ena_file_size(get_reads_from_run.out.splitText().map{it -> it.trim()})
+    //ascp_download(get_reads_from_run.out.splitText().map{it -> it.trim()})
+    //extract_archive(ascp_download.out)
 }
