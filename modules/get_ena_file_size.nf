@@ -10,6 +10,6 @@ file "file_size.txt"
 
 script:
 """
-echo "du -s ." | lftp ftp://ftp.sra.ebi.ac.uk/vol1/${path} > file_size.txt
+echo "du -s ." | lftp ftp://ftp.sra.ebi.ac.uk/vol1/${path} 2>&1 file_size.txt
 """
 }
