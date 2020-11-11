@@ -6,8 +6,8 @@ input:
 val(run_id)
 
 output:
-file 'ftp.txt'
-file 'bytes.txt'  
+//file 'ftp.txt'
+//file 'bytes.txt'  
 file 'out.txt'
 
 script:
