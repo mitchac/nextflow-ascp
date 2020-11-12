@@ -12,5 +12,10 @@ Channel.from('SRR12118866').set{ ch_run }
 workflow {
     get_reads_from_run(ch_run)
     get_file_chunks_py(get_reads_from_run.out.splitCsv())
-    //ascp_download(get_reads_from_run.out.splitText().map{it -> it.trim()}.splitCsv())
+    ascp_download(get_file_chunks_py.out.splitCsv())
+    ascp_download.out.groupTuple()
+    .collectFile( name:'result.fa', sort: { it[0] } )  {
+        it[3]
+      }
+    .view()
 }

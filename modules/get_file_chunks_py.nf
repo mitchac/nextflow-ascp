@@ -10,6 +10,6 @@ file 'out.txt'
 
 script:
 """
-get_file_chunks.py ${input}
+get_file_chunks.py ${input[0]} ${input[1]}
 """
 }

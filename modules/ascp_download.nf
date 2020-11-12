@@ -6,13 +6,16 @@ input:
 val(input)
 
 output:
-file "*.fastq.gz"
+tuple val (file_path), val (file_chunk_start), val (file_chunk_end), file ("*.fastq.gz")
 
 script:
-input[0] = input[0].substring(1)
-input[2] = input[2].substring(1, input[2].length() - 1)     
+file_path = input[0]
+file_chunk_start = input[1]
+file_chunk_end = input[2]
 
+f = file(input[0]).name
+println f
 """
-ascp -QT -@${input[1]}:${input[2]} -l 300m -P33001 -i /home/aspera/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:${input[0]} .
+ascp -QT -@${input[1]}:${input[2]} -l 300m -P33001 -i /home/aspera/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:${input[0]} ${f}
 """
 }
