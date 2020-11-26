@@ -13,10 +13,12 @@ workflow {
     get_reads_from_run(ch_run)
     get_file_chunks_py(get_reads_from_run.out.splitCsv())
     ascp_download(get_file_chunks_py.out.splitCsv())
-    combine_file_chunks(ascp_download.out
-      .map {tup -> [tup[0],[tup[0],tup[1],tup[2]]]}
-      .groupTuple(sort:{tup -> tup[1]})
-      .map {tup -> tup[1]})
+    combine_file_chunks(
+    ascp_download.out
+    .map{ tup -> tuple( groupKey(tup[0], tup[3].toInteger()), [tup[0], tup[1], tup[2]] )}
+    .groupTuple(sort:{tup -> tup[1]})
+    .map {tup -> tup[1]}    
+    )
     extract_archive(combine_file_chunks.out)
     extract_archive.out.view()
 }

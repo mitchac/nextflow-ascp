@@ -6,12 +6,13 @@ input:
 val(input)
 
 output:
-tuple val (file_name), val (file_chunk_start), file ("*.fastq.gz")
+tuple val (file_name), val (file_chunk_start), file ("*.fastq.gz"), val(file_chunks_count)
 
 script:
 file_path = input[0]
 file_chunk_start = input[1]
 file_chunk_end = input[2]
+file_chunks_count = input[3]
 
 file_name = file(file_path).name
 

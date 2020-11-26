@@ -17,12 +17,14 @@ input.each {
     paths+= " "
 }
 
+file_name = input[0][0]
+
 """
 declare -a arr=(${paths})
 
 for i in "\${arr[@]}"
 do
-   cat "\$i" >> ${input[0][0]}
+   cat "\$i" >> ${file_name}
 done
 """
 }
