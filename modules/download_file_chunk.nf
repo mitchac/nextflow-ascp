@@ -1,4 +1,4 @@
-process ascp_download {
+process download_file_chunk {
 
 container 'mitchac/asperacli'
 

@@ -3,28 +3,18 @@ process combine_file_chunks{
 container 'ubuntu:latest'
 
 input:
-val(input)
+file fragment_paths
 
 output:
-file ("*.fastq.gz")
+file ("*")
 
 script:
-paths = ""
-input.each {
-    paths+= "\""
-    paths+= it[2]
-    paths+= "\"" 
-    paths+= " "
-}
+   println fragment_paths
+   basename = fragment_paths.baseName
+   """
+   cat $fragment_paths | while read f; do
+      cat ${params.dataprefix}\$f
+   done > ${basename}.merged.gz
+   """
 
-file_name = input[0][0]
-
-"""
-declare -a arr=(${paths})
-
-for i in "\${arr[@]}"
-do
-   cat "\$i" >> ${file_name}
-done
-"""
 }

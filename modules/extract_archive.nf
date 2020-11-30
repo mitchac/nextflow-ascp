@@ -6,7 +6,7 @@ input:
 file(archive)
 
 output:
-file "*.fastq"
+file "*"
 
 script:
 """
