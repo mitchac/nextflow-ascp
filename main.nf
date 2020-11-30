@@ -1,4 +1,4 @@
-nextflow.preview.dsl=2
+nextflow.enable.dsl=2
 
 include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 include {get_file_chunks} from './modules/get_file_chunks.nf'
