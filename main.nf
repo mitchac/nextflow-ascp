@@ -1,24 +1,13 @@
 nextflow.enable.dsl=2
 
-include {get_reads_from_run} from './modules/get_reads_from_run.nf'
-include {get_file_chunks} from './modules/get_file_chunks.nf'
-include {download_file_chunk} from './modules/download_file_chunk.nf'
-include {combine_file_chunks} from './modules/combine_file_chunks.nf'
-include {extract_archive} from './modules/extract_archive.nf'
+include {test} from './modules/test.nf'
 
 //using small (~10Mb) paired-end test data set SRR12118866 
 Channel.from('SRR12118866').set{ ch_run }
 
+Channel.from('s3://emriuom/tmp/0d/0ea4d57fc3dd28c45ed4ca256fff0e/bin/get_file_chunks.py').set{ ch_test }
+
 workflow {
-    get_reads_from_run(ch_run)
-    get_file_chunks(get_reads_from_run.out.splitCsv())
-    download_file_chunk(get_file_chunks.out.splitCsv())
-    combine_file_chunks(
-    download_file_chunk.out
-    .map{ tup -> tuple( groupKey(tup[0], tup[3].toInteger()), [tup[0], tup[1], tup[2]] )}
-    .groupTuple(sort:{tup -> tup[1]})
-    .collectFile { id, files -> [ id, files.collect{ it[2] }.join('\n') + '\n' ] }
-    )
-    extract_archive(combine_file_chunks.out)
-    extract_archive.out.view()
+test(ch_test)
+test.out.view()
 }
