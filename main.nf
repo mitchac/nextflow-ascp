@@ -6,8 +6,10 @@ include {download_file_chunk} from './modules/download_file_chunk.nf'
 include {combine_file_chunks} from './modules/combine_file_chunks.nf'
 include {extract_archive} from './modules/extract_archive.nf'
 
+params.sra_accessions = 'SRR12118866'
+
 //using small (~10Mb) paired-end test data set SRR12118866 
-Channel.from('SRR12118866').set{ ch_run }
+Channel.from(params.sra_accessions).set{ ch_run }
 
 workflow {
     get_reads_from_run(ch_run)
