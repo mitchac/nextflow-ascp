@@ -14,6 +14,15 @@ Channel.from(params.sra_accessions).set{ ch_run }
 workflow {
     get_reads_from_run(ch_run)
     get_file_chunks(get_reads_from_run.out.splitCsv())
+    download_file(get_file_chunks.out.splitCsv())
+    extract_archive(download_file.out)
+    extract_archive.out.view()
+}
+
+/*
+workflow {
+    get_reads_from_run(ch_run)
+    get_file_chunks(get_reads_from_run.out.splitCsv())
     download_file_chunk(get_file_chunks.out.splitCsv())
     combine_file_chunks(
     download_file_chunk.out
@@ -24,3 +33,4 @@ workflow {
     extract_archive(combine_file_chunks.out)
     extract_archive.out.view()
 }
+*/
