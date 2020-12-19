@@ -2,7 +2,7 @@ nextflow.enable.dsl=2
 
 include {get_reads_from_run} from './modules/get_reads_from_run.nf'
 include {get_file_chunks} from './modules/get_file_chunks.nf'
-include {download_file_chunk} from './modules/download_file_chunk.nf'
+include {download_file} from './modules/download_file.nf'
 include {combine_file_chunks} from './modules/combine_file_chunks.nf'
 include {extract_archive} from './modules/extract_archive.nf'
 
