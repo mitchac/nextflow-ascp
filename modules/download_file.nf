@@ -1,4 +1,4 @@
-process download_file_chunk {
+process download_file {
 
 container 'ubuntu'
 
