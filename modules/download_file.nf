@@ -1,6 +1,6 @@
 process download_file {
 
-container 'ubuntu'
+container 'tutum/curl:latest'
 
 input:
 val(input)
