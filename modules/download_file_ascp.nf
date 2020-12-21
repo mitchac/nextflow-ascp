@@ -1,6 +1,6 @@
 process download_file_ascp {
 
-container 'tutum/curl:latest'
+container 'mitchac/asperacli'
 
 input:
 val(input)
