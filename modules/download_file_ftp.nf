@@ -1,4 +1,4 @@
-process download_file {
+process download_file_ftp {
 
 container 'tutum/curl:latest'
 
