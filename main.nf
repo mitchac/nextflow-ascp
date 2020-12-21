@@ -14,7 +14,7 @@ Channel.from(params.sra_accessions).set{ ch_run }
 workflow {
     get_reads_from_run(ch_run)
     download_file_ascp(get_reads_from_run.out.splitCsv())
-    extract_archive(download_file.out)
+    extract_archive(download_file_ascp.out)
     extract_archive.out.view()
 }
 
